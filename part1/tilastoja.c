@@ -4,17 +4,18 @@
 
 int main(int argc, char *argv[]) {
 	int i,j,k;
-	int lkm = argc - 1;
+	int lkm = argc-1;
 	int freq = 0;
 	int printIter=0;
 	int dupe=0;
 
-    double numbers[lkm];
-	double printed[(int)floor(argc/2)];
+    double* numbers = malloc(lkm);
+	double* printed = malloc((int)floor(argc/2));
     double smallest, largest;
 
 	int unique_count = 0, max_freq = 0;
-	int freq_numbers[lkm], freq_count = 0;
+	int* freq_numbers = malloc(lkm); 
+	int freq_count = 0;
 
     for (i = 0; i < lkm; i++) {
         numbers[i] = strtod(argv[i+1], NULL);
@@ -44,10 +45,11 @@ int main(int argc, char *argv[]) {
         if (freq == 1) {
             unique_count++;
             if (unique_count == 1) {
-                printf("Unique:");
+                printf("Ainutlaatuiset:");
             }
-            printf(" %f", numbers[i]);
-        }
+			printf(" %f", numbers[i]);
+			
+                    }
         if (freq > max_freq) {
             max_freq = freq;
         }
@@ -66,8 +68,8 @@ int main(int argc, char *argv[]) {
         }
         if (freq_numbers[i] == max_freq) {
             freq_count++;
-            if (freq_count == 1) {
-                printf("Most frequently occurring (%d):", max_freq); 
+            if (freq_count == 1 && max_freq>1) {
+                printf("Useimmiten esiintyneet (%d kertaa):", max_freq); 
 			}
 			for (k=0;k<printIter;k++) {
 				if (printed[k] == numbers[i]) {
@@ -75,7 +77,7 @@ int main(int argc, char *argv[]) {
 					break;
 				}
 			}
-			if (dupe==0) {
+			if (dupe==0 && max_freq>1) {
 	            printf(" %f", numbers[i]);
 				printed[printIter] = numbers[i];
 				printIter++;
@@ -83,8 +85,11 @@ int main(int argc, char *argv[]) {
 			dupe = 0;
         }
     }
+	free(numbers);
+	free(printed);
+	free(freq_numbers);
 
-    if (freq_count > 0) {
+    if (freq_count > 0 && max_freq>1) {
         printf("\n");
     }
 
