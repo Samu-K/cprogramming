@@ -9,12 +9,13 @@ int main(int argc, char *argv[]) {
 	int printIter=0;
 	int dupe=0;
 
-    double* numbers = malloc(lkm);
-	double* printed = malloc((int)floor(argc/2));
-    double smallest, largest;
+    double* numbers = (double*)malloc(lkm*sizeof(double));
+	double* printed = (double*)malloc(((int)floor(argc/2))*sizeof(double));
+    double smallest = 0;
+	double largest = 0;
 
 	int unique_count = 0, max_freq = 0;
-	int* freq_numbers = malloc(lkm); 
+	int* freq_numbers = (int*)malloc(lkm*sizeof(int)); 
 	int freq_count = 0;
 
     for (i = 0; i < lkm; i++) {
@@ -42,7 +43,7 @@ int main(int argc, char *argv[]) {
                 freq++;
             }
         }
-        if (freq == 1) {
+        if ( freq == 1) {
             unique_count++;
             if (unique_count == 1) {
                 printf("Ainutlaatuiset:");
@@ -85,14 +86,13 @@ int main(int argc, char *argv[]) {
 			dupe = 0;
         }
     }
-	free(numbers);
-	free(printed);
-	free(freq_numbers);
 
     if (freq_count > 0 && max_freq>1) {
         printf("\n");
     }
-
+	free(numbers);
+	free(printed);
+	free(freq_numbers);
     return 0;
 }
 
