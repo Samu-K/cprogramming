@@ -12,13 +12,11 @@ int main(int argc, char* argv[]) {
   char frontChar;
 
   for (i=1;i<argc;i++) {
-    printf("%s\n",argv[i]);
     backIter = strlen(argv[i])-1;
     frontIter = 0;
     for (j=0;j<strlen(argv[i]);j++) {
       backChar = argv[i][backIter];
       frontChar = argv[i][frontIter];
-      printf("%c : %c\n", frontChar, backChar);
       if (tolower(frontChar) != tolower(backChar)) {
         result=0;
         break;
@@ -27,10 +25,11 @@ int main(int argc, char* argv[]) {
       frontIter++;
     }
     if (result) {
-      printf("%s is a palindrome\n", argv[i]);
+      printf("\"%s\": on palindromi\n", argv[i]);
     } else {
-      printf("%s is not a palindrom\n", argv[i]);
+      printf("\"%s\": ei ole palindromi\n", argv[i]);
     }
+    result=1;
   }
-  return 1;
+  return 0;
 }
