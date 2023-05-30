@@ -1,8 +1,8 @@
 #include "bitit.h"
 
-int main(int argc, char* argv[]) {
+int main(void) {
 
-  scharBitit('c');
+  scharBitit(2015);
   shortBitit(2015);
   intBitit(2015);
   longBitit(2015);

@@ -4,5 +4,5 @@ void scharBitit(signed char x);
 void shortBitit(short int x);
 void intBitit(int x);
 void longBitit(long int x);
-unsigned long long int createMask(int bitLen);
+long int createMask(int bitLen);
 #endif

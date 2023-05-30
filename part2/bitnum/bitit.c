@@ -5,8 +5,8 @@
 
 #include "bitit.h"
 
-unsigned long long int createMask(int bitLen) {
-  unsigned long long int mask = 1;
+long int createMask(int bitLen) {
+  long int mask = 1;
   mask = mask << (bitLen - 1);
   return mask;
 }
@@ -19,7 +19,7 @@ void scharBitit(signed char x) {
   int oneCount = 0;
 
   /* Print the actual value */ 
-  printf("%c\n",x);
+  printf("%d\n",x);
 
   /* Print the bit value */ 
   for (i = 0; i <= bitLen - 1; i++) {
@@ -33,8 +33,8 @@ void scharBitit(signed char x) {
     mask >>= 1;
   }
   printf("\n");
-  printf("Number of 0 bits: %d\n", zeroCount);
-  printf("Number of 1 bits: %d\n", oneCount);
+  printf("%d\n", zeroCount);
+  printf("%d\n", oneCount);
 }
 
 void shortBitit(short int x) {
@@ -59,13 +59,13 @@ void shortBitit(short int x) {
     mask >>= 1;
   }
   printf("\n");
-  printf("Number of 0 bits: %d\n", zeroCount);
-  printf("Number of 1 bits: %d\n", oneCount);
+  printf("%d\n", zeroCount);
+  printf("%d\n", oneCount);
 }
 
 void intBitit(int x) {
   int bitLen = 32;
-  unsigned long long int mask = createMask(bitLen);
+  long int mask = createMask(bitLen);
   int i = 0;
   int zeroCount = 0;
   int oneCount = 0;
@@ -85,13 +85,11 @@ void intBitit(int x) {
     mask >>= 1;
   }
   printf("\n");
-  printf("Number of 0 bits: %d\n", zeroCount);
-  printf("Number of 1 bits: %d\n", oneCount);
+  printf("%d\n", zeroCount);
+  printf("%d\n", oneCount);
 }
 
 void longBitit(long int x) {
-  int bitLen = 64;
-  long int mask = createMask(bitLen);
   int i = 0;
   int zeroCount = 0;
   int oneCount = 0;
@@ -100,20 +98,17 @@ void longBitit(long int x) {
   printf("%ld\n",x);
 
   /* print bit value */ 
-  for (i = 0; i <= bitLen - 1; i++) {
-    if ( x & mask) {
-      printf("1");
-      oneCount++;
+  for (i = sizeof(long int)*CHAR_BIT-1; i >= 0; i--) {
+    printf("%ld", (x >> i) & 1);
+    if (((x >> i) & 1) == 0) {
+        zeroCount++;
     } else {
-      printf("0");
-      zeroCount++;
+        oneCount++;
     }
-    mask = mask >> 1;
-    mask |= (1LL << (bitLen - 1));
   }
   printf("\n");
-  printf("Number of 0 bits: %d\n", zeroCount);
-  printf("Number of 1 bits: %d\n", oneCount);
+  printf("%d\n", zeroCount);
+  printf("%d\n", oneCount);
 
 }
 
