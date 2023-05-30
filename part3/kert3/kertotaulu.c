@@ -4,7 +4,6 @@
 
 Kertotaulu* luoKertotaulu(uint a, uint b, uint c, uint d) {
   int i,j;
-  int start = c;
 
   Kertotaulu* ret = malloc(sizeof* ret);
   int rows=d-c+2;
@@ -18,17 +17,42 @@ Kertotaulu* luoKertotaulu(uint a, uint b, uint c, uint d) {
   ret->c=c;
   ret->d=d;
 
-  for(i=0;i<=rows;i++) {
+  for(i=0;i<2;i++) {
+    kert[i] = malloc(sizeof(uint)*cols);
+    if (i==0) {
+      kert[0][0] = 1;
+    }
+
+    for(j=1;j<=cols;j++) {
+      kert[i][j] = a;
+      a++;
+    }
+  }
+  a = ret->a;
+
+  for(i=1;i<=rows;i++) {
     kert[i] = malloc(sizeof(uint)*cols);
     for(j=0;j<=cols;j++) {
-      kert[i][j] = a;
-      c++;
+      kert[i][j] = c*kert[0][j];
     }
-    a++;
-    c=start;
+    c++;
   };
 
   ret->kertotaulu = kert;
 
   return ret;
+}
+
+void tuhoaKertotaulu(Kertotaulu* kt) {
+  uint i;
+  if (kt == NULL) {
+      return;  
+  }
+
+  for (i = 0; i < kt->d - kt->c + 2; i++) {
+      free(kt->kertotaulu[i]);
+  }
+  free(kt->kertotaulu);
+
+  free(kt);
 }
