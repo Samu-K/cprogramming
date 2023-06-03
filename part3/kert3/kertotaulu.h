@@ -12,6 +12,6 @@ typedef struct Kertotaulu Kertotaulu;
 
 Kertotaulu* luoKertotaulu(uint,uint,uint,uint);
 
-void tuhoaKertotaulu(Kertotaulu* kt);
+void tuhoaKertotaulu(Kertotaulu*);
 
 #endif

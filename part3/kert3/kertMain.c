@@ -2,7 +2,7 @@
 #include <stdio.h>
 
 int main(void) {
-  Kertotaulu *kt = luoKertotaulu(2,9,11,17);
+  Kertotaulu *kt = luoKertotaulu(10,19,2,4);
   uint i = 0;
   uint j = 0;
   for(i = 0; i <= (kt->d - kt->c + 1); ++i)    /* Rivit */
@@ -20,5 +20,6 @@ int main(void) {
     }
     printf("\n");
   }
+  tuhoaKertotaulu(kt);
   return 0;
 }
