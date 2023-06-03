@@ -2,10 +2,9 @@
 #include <stdlib.h>
 #include "fibonacci.h"
 
-int main(int argc, char *argv[])
-{
-  char *fibonacci = fib_jono_mj(atoi(argv[1]));
-  printf("%s\n", fibonacci);
-  free(fibonacci);
-  return 0;
+int main(void) {
+
+  fib_jono_mj(15);
+
+  return EXIT_SUCCESS;
 }
