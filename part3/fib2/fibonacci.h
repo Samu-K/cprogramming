@@ -3,10 +3,8 @@
 
 #include <stdlib.h>
 #include <stdio.h>
+#include <string.h> 
 
-
-typedef unsigned int uint;
-
-char* fib_jono_mj(uint n);
+char* fib_jono_mj(unsigned int n);
 
 #endif /* FIBONACCI_H */

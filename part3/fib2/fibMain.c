@@ -3,8 +3,7 @@
 #include "fibonacci.h"
 
 int main(void) {
-
-  fib_jono_mj(15);
-
+  char* fib = fib_jono_mj(15);
+  printf("%s\n",fib);
   return EXIT_SUCCESS;
 }
