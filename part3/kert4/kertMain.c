@@ -4,10 +4,10 @@
 
 int main(void) {
 
-  uint a = 50;
-  uint b = 60;
-  uint c = 40;
-  uint d = 50;
+  uint a = 1;
+  uint b = 10;
+  uint c = 1;
+  uint d = 10;
 
   char** kertotaulu = luo_kertotaulu_mjt(a,b,c,d);
   uint i = 0;
